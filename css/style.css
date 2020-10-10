@@ -1,12 +1,20 @@
-body{
-    background-color:black;
+body {
+  background-color: black;
 }
-#tela{
-    width: 350px;
-    
-    position: absolute;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%,-10%);
-    box-shadow: 1px 5px 10px rgb(195,195, 195);
+#tela {
+  width: 350px;
+
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -10%);
+  box-shadow: 1px 5px 10px rgb(195, 195, 195);
+}
+
+#img {
+  width: 640px;
+  height: 360px;
+  position: absolute;
+  top: 20%;
+  left: 15;
 }
