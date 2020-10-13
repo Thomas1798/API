@@ -1,42 +1,42 @@
 let fun = function (sucess) {
-    
-    
-    let contagem =0;
+  let contagem =0;
+  let status = sucess.status;
+  console.log(sucess.id)
 
-    setInterval(aguardarStatus,1000);
-     function  aguardarStatus(){
-      let info   =  fetch(
-        `https://api.browshot.com/api/v1/screenshot/info?id=${sucess.id}&key=DW0ZLoI5v4ksqdQM8GP8jnsq2iX `)
-        .then((data) => data.json())
-        .then((res) => render(res));
-  
-        function render(res){
-          if(res.status == 'finished'){
-            document.getElementById('counter').innerHTML = "";  
-            Vue.component("imagem", {
-              props: ["img"],
-              template: `<img src="https://browshot.com/screenshot/image/${res.id}" id="img" />`,
-            });
-            let img = new Vue({
-                el: "#imga",
-      
-              });
-        }else{
-            contagem++;
-            document.getElementById('counter').innerHTML = contagem;
-            
-          }
-        }
-    }    
   };
   function takeaShot(){
    let url = document.getElementById('url1').value 
    console.log(url)
    
-   let create = fetch(`https://api.browshot.com/api/v1/screenshot/create?url=${url}/&instance_id=12&size=screen&cache=0&key=DW0ZLoI5v4ksqdQM8GP8jnsq2iX`)
+   let create = fetch(`https://api.browshot.com/api/v1/screenshot/create?url=${url}/&instance_id=12&size=screen&cache=0&key=whlNhy7e2TaXPjYhEYucXgHXR2OSW`)
     .then((data) => data.json())
     .then((sucess) => fun(sucess));
 
 }
 
+function renderizar(sucess){
+  Vue.component("imagem", {
+    props: ["img"],
+    template: `<img src="https://browshot.com/screenshot/image/${sucess.id}" id="img" />`,
+  });
+  let img = new Vue({
+      el: "#imga",
+
+    });
+}
+
+const bar =   new Vue({
+  el: "#app",
+  vuetify: new Vuetify(),
+  data: () => ({
+      rules: [
+        value => !!value || 'Required.',
+      ],
+    }),
+});
+
+const car = new Vue({
+   el: "#car",
+   vuetify : new Vuetify(),
+}); 
 
