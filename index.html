@@ -28,7 +28,7 @@
           <v-container class="justify-center align-content-start" >
           <div> <p class=" font-weight-black "> Digite a url: </p> </div>
             <v-col cols="4" class="">
-            <v-text-field  class="white--text"></v-text-field>
+            <v-text-field  id="url" class="white--text"></v-text-field>
             </v-col>
             <v-col class="d-flex flex-row " cols="6"> 
             <v-row class=" justify-start " no-gutters >    
@@ -40,10 +40,12 @@
             raised
             rounded
             text
-            width="250">Take a shot</v-btn>
+            width="250"
+            onclick="takeaShot()">Take a shot</v-btn>
         </v-row>  
             <v-row class="  justify-start" no-gutters >
             <v-btn
+            id="btn-baixar"
             class="purple darken-4 white--text"
             elevation="3"
             medium
@@ -51,13 +53,14 @@
             raised
             rounded
             text
-            width="250">Baixar</v-btn>
+            width="250">  Baixar </v-btn>
              </v-row>
              </v-col>    
 </v-container>
 
     </v-app>
     </div>
+      <div id="teste">a</div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
     <script src="./javascript/script.js"></script>

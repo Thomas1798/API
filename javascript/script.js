@@ -1,30 +1,5 @@
-let fun = function (sucess) {
-  let contagem =0;
-  let status = sucess.status;
-  console.log(sucess.id)
 
-  };
-  function takeaShot(){
-   let url = document.getElementById('url1').value 
-   console.log(url)
-   
-   let create = fetch(`https://api.browshot.com/api/v1/screenshot/create?url=${url}/&instance_id=12&size=screen&cache=0&key=whlNhy7e2TaXPjYhEYucXgHXR2OSW`)
-    .then((data) => data.json())
-    .then((sucess) => fun(sucess));
-
-}
-
-function renderizar(sucess){
-  Vue.component("imagem", {
-    props: ["img"],
-    template: `<img src="https://browshot.com/screenshot/image/${sucess.id}" id="img" />`,
-  });
-  let img = new Vue({
-      el: "#imga",
-
-    });
-}
-
+document.getElementById("btn-baixar").disabled  =true ;
 const bar =   new Vue({
   el: "#app",
   vuetify: new Vuetify(),
@@ -35,8 +10,41 @@ const bar =   new Vue({
     }),
 });
 
-const car = new Vue({
-   el: "#car",
-   vuetify : new Vuetify(),
-}); 
+
+  function fun (sucess) {
+ let cont = 1 
+ let interval = setInterval(check,1000);
+ console.log(interval)
+    function check(){
+  let info = fetch(`https://api.browshot.com/api/v1/screenshot/info?id=${sucess.id}&key=gLJJLX3gH99MSrL5kC6pmuYtufhDv`)
+  .then((data) => data.json())
+  .then((sucess) => {
+  
+      if(sucess.status=='error'){
+        console.log("Falhou")
+      }else if(sucess.status=="finished"){
+        console.log("deu certo")
+        document.getElementById("btn-baixar").onclick  = function (){
+          document.getElementById("btn-baixar").disabled  =false ;
+          window.location.href = `https://browshot.com/screenshot/image/${sucess.id}?type=download&scale=1&shot=1`
+        }
+        clearInterval(interval)
+      }else{
+        console.log(cont)
+        cont++;
+      }
+  });
+    }
+
+};
+
+  function takeaShot(){
+   let url = document.getElementById('url').value 
+   console.log(url)
+   let create = fetch(`https://api.browshot.com/api/v1/screenshot/create?url=${url}/&instance_id=12&size=screen&cache=0&key=gLJJLX3gH99MSrL5kC6pmuYtufhDv`)
+    .then((data) => data.json())
+    .then((sucess) =>   fun(sucess) );
+}
+
+
 
