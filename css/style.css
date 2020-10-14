@@ -11,3 +11,15 @@
 #app {
   background-color: #f5f5f5;
 }
+.tempo {
+  margin-top: -25vh;
+  width: 425px;
+}
+
+.contador {
+  font-stretch: ultra-expanded;
+  font-style: italic;
+  font-size: 30em;
+  display: inline-flex;
+  flex-direction: row;
+}
